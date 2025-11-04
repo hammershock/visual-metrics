@@ -7,7 +7,7 @@ from PIL import Image
 
 
 class DINOv2Score:
-    def __init__(self, model_name="facebook/dinov2-base", cache_dir="/cache/hanmo/models/facebook/dinov2-base", device=None):
+    def __init__(self, model_name="facebook/dinov2-large", cache_dir="/cache/hanmo/models/facebook/dinov2-large", device=None):
         """
         Initialize DINOv2 feature extractor using HuggingFace transformers.
         The model will be automatically downloaded (if needed) to /cache/hanmo/models.
