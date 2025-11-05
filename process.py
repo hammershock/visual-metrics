@@ -9,6 +9,7 @@ def dataloader(base_dir="/temp/rey/stylagent/images/omniconsistency"):
         print(category_path)
         # load jsonl:
         analysis_path = os.path.join(category_path, "analysis.jsonl")  # analysis.jsonl | val.jsonl
+
         with open(analysis_path, "r", encoding="utf-8") as f:
             for line in f:
                 line = line.strip()
@@ -20,10 +21,11 @@ def dataloader(base_dir="/temp/rey/stylagent/images/omniconsistency"):
                 ours_sty_path = base_dir + data['sty']
                 prompt = data["prompt"]
                 # yield Image.open(cnt_path), Image.open(ref_path)
-                yield cnt_path, ref_path, prompt, ours_sty_path
+                style = data['cnt'].split("/")[1]
+                yield cnt_path, ref_path, prompt, ours_sty_path, style
         
 
 if __name__ == "__main__":
-    for cnt, ref, prompt, _ in dataloader():
-        pass
+    for cnt, ref, prompt, _, style in dataloader():
+        print(style)
         
