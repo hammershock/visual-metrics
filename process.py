@@ -17,11 +17,13 @@ def dataloader(base_dir="/temp/rey/stylagent/images/omniconsistency"):
         
                 cnt_path = base_dir + data['cnt']
                 ref_path = base_dir + data['ref']
-                yield Image.open(cnt_path), Image.open(ref_path)
-                # yield cnt_path, ref_path
+                ours_sty_path = base_dir + data['sty']
+                prompt = data["prompt"]
+                # yield Image.open(cnt_path), Image.open(ref_path)
+                yield cnt_path, ref_path, prompt, ours_sty_path
         
 
 if __name__ == "__main__":
-    for cnt, ref in dataloader():
+    for cnt, ref, prompt, _ in dataloader():
         pass
         
