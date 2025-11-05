@@ -208,4 +208,6 @@ __marimo__/
 
 
 images/
+temp/
+test_images/
 temp.py
