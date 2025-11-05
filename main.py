@@ -2,6 +2,7 @@ from metrics import DINOv2Score, VGGScore, FID1KScore, CLIPScore
 
 from PIL import Image
 
+# conda activate hanmo-metrics
 
 if __name__ == "__main__":
     # examples
