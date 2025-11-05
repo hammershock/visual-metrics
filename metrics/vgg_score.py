@@ -114,10 +114,12 @@ class PerceptualLoss(nn.Module):
 
 
 class VGGScore:
-    def __init__(self, model_name="VGG16", layers=None, layer_weights=None, normalize_gram=None):
-        # unused: model_name
+    def __init__(self, model_name="VGG16", layers=None, layer_weights=None, normalize_gram=True):
+        # model_name: unused
         self.loss = PerceptualLoss(layers=layers, layer_weights=layer_weights, normalize_gram=normalize_gram)
         self.to_tensor = transforms.ToTensor()
         
     def score(self, image1: Image, image2: Image) -> float:
-        return self.loss(self.to_tensor(image1), self.to_tensor(image2)).item()
+        tensor1 = self.to_tensor(image1)
+        tensor2 = self.to_tensor(image2)
+        return self.loss(tensor1, tensor2).item()
